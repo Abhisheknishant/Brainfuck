@@ -8,8 +8,6 @@ group: beta
 
 arch:
   - amd64
-  - s390x
-  - ppc64le
   - arm64
 
 # addons:
@@ -27,53 +25,11 @@ install:
 
 os:
   - linux
-  - osx
-
 compiler:
   - gcc
-  - clang
 
 env:
-  -
-  - TARGET_ARCH=-m32
   - TARGET_ARCH=-mx32
-
-jobs:
-    exclude:
-        -
-            os: linux
-            compiler: clang
-            env: TARGET_ARCH=-mx32
-        -
-            os: osx
-            env: TARGET_ARCH=-mx32
-        -
-            arch: s390x
-            os: osx
-        -
-            arch: s390x
-            env: TARGET_ARCH=-m32
-        -
-            arch: s390x
-            env: TARGET_ARCH=-mx32
-        -
-            arch: ppc64le
-            os: osx
-        -
-            arch: ppc64le
-            env: TARGET_ARCH=-m32
-        -
-            arch: ppc64le
-            env: TARGET_ARCH=-mx32
-        -
-            arch: arm64
-            os: osx
-        -
-            arch: arm64
-            env: TARGET_ARCH=-m32
-        -
-            arch: arm64
-            env: TARGET_ARCH=-mx32
 
 # Only run the tests if the exe was built.
 script:
@@ -91,4 +47,3 @@ script:
   - test ! -x extras/c-sizes || extras/c-sizes
 
 #  - "\"$CC\" -dM -E -x c -</dev/null"
-
